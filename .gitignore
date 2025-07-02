@@ -1,0 +1,7 @@
+# Step 1: Ignore virtualenv, Python build artifacts, and SAM build folder
+__pycache__/
+*.pyc
+.env
+.venv/
+.envrc
+.aws-sam/

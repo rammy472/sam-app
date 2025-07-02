@@ -1,0 +1,41 @@
+# Step 4: AWS SAM template
+# - Defines DynamoDB table
+# - Lambda function (with environment variables and permissions)
+# - API Gateway POST endpoint
+
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: User Registration Lambda with Powertools and DynamoDB
+
+Resources:
+  UsersTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: users
+      AttributeDefinitions:
+        - AttributeName: username
+          AttributeType: S
+      KeySchema:
+        - AttributeName: username
+          KeyType: HASH
+      BillingMode: PAY_PER_REQUEST
+
+  UserRegistrationFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: app.lambda_handler
+      Runtime: python3.11
+      CodeUri: src/
+      Environment:
+        Variables:
+          USERS_TABLE: users
+          POWERTOOLS_SERVICE_NAME: "UserRegistrationService"
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: users
+      Events:
+        Api:
+          Type: Api
+          Properties:
+            Path: /
+            Method: post

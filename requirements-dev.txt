@@ -1,0 +1,4 @@
+# Step 3: Dev/test dependencies
+pytest
+requests
+moto
