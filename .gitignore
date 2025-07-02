@@ -1,4 +1,4 @@
-# Step 1: Ignore virtualenv, Python build artifacts, and SAM build folder
+#  Ignore virtualenv, Python build artifacts, and SAM build folder
 __pycache__/
 *.pyc
 .env

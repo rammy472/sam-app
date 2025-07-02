@@ -1,4 +1,4 @@
-# Step 4: AWS SAM template
+# AWS SAM template
 # - Defines DynamoDB table
 # - Lambda function (with environment variables and permissions)
 # - API Gateway POST endpoint

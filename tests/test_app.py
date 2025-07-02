@@ -1,4 +1,4 @@
-# Step 6: Unit tests for the Lambda function
+# Unit tests for the Lambda function
 # - Uses moto to mock DynamoDB
 # - Tests validation, registration, and duplicate username
 
