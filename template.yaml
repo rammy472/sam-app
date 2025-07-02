@@ -34,8 +34,18 @@ Resources:
         - DynamoDBCrudPolicy:
             TableName: users
       Events:
-        Api:
+        ApiPost:
           Type: Api
           Properties:
             Path: /
             Method: post
+        ApiGet:
+          Type: Api
+          Properties:
+            Path: /{username}
+            Method: get
+
+Outputs:
+  UserRegistrationApi:
+    Description: "API Gateway endpoint URL for Prod stage"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/"
